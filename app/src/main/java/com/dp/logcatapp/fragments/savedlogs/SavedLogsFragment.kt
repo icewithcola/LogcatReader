@@ -264,14 +264,14 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
       .map { recyclerViewAdapter.data[it] }
       .toList()
 
-    val db = MyDB.getInstance(context!!)
+    val db = MyDB.getInstance(requireContext())
     scope.launch {
       withContext(IO) {
         val deleted = deleteList
           .filter {
             with(Uri.parse(it.info.path)) {
-              if (it.info.isCustom && Build.VERSION.SDK_INT >= 21) {
-                val file = DocumentFile.fromSingleUri(context!!, this)
+              if (it.info.isCustom && true) {
+                val file = DocumentFile.fromSingleUri(requireContext(), this)
                 file != null && file.delete()
               } else {
                 this.toFile().delete()
@@ -338,15 +338,15 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
 
   private fun onSaveCallback(uri: Uri) {
     val fileInfo = recyclerViewAdapter.getItem(viewModel.selectedItems.toIntArray()[0])
-    val folder = File(context!!.filesDir, LogcatLiveFragment.LOGCAT_DIR)
+    val folder = File(requireContext().filesDir, LogcatLiveFragment.LOGCAT_DIR)
     val file = File(folder, fileInfo.info.fileName)
 
     try {
       val src = FileInputStream(file)
-      val dest = context!!.contentResolver.openOutputStream(uri)
+      val dest = requireContext().contentResolver.openOutputStream(uri)
       runSaveFileTask(src, dest!!)
     } catch (e: IOException) {
-      activity!!.showToast(getString(R.string.error_saving))
+      requireActivity().showToast(getString(R.string.error_saving))
     }
   }
 
@@ -398,7 +398,7 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
   ) {
     val fileInfo = recyclerViewAdapter.getItem(viewModel.selectedItems.toIntArray()[0])
 
-    val db = MyDB.getInstance(context!!)
+    val db = MyDB.getInstance(requireContext())
     scope.launch {
       withContext(IO) {
         db.savedLogsDao().delete(fileInfo.info)
@@ -415,7 +415,7 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
     private var exportFormat = ExportFormat.DEFAULT
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-      return AlertDialog.Builder(activity!!)
+      return AlertDialog.Builder(requireActivity())
         .setTitle(getString(R.string.select_export_format))
         .setSingleChoiceItems(R.array.export_format, 0) { _, which ->
           exportFormat = ExportFormat.values()[which]
@@ -600,21 +600,21 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
       val view = inflateLayout(R.layout.rename_dialog)
       val editText = view.findViewById<EditText>(R.id.editText)
-      editText.setText(arguments!!.getString(KEY_FILENAME))
+      editText.setText(requireArguments().getString(KEY_FILENAME))
       editText.selectAll()
 
-      val dialog = AlertDialog.Builder(activity!!)
+      val dialog = AlertDialog.Builder(requireActivity())
         .setTitle(R.string.rename)
         .setView(view)
         .setPositiveButton(android.R.string.ok) { _, _ ->
           val newName = editText.text.toString()
           if (newName.isNotEmpty()) {
-            val file = arguments!!.getString(KEY_PATH)!!.toUri().toFile()
+            val file = requireArguments().getString(KEY_PATH)!!.toUri().toFile()
             val newFile = File(file.parent, newName)
             if (file.renameTo(newFile)) {
               (targetFragment as SavedLogsFragment).onRename(newName, newFile.toUri())
             } else {
-              activity!!.showToast(getString(R.string.error))
+              requireActivity().showToast(getString(R.string.error))
             }
           }
           dismiss()
@@ -626,7 +626,7 @@ class SavedLogsFragment : BaseFragment(), View.OnClickListener, View.OnLongClick
 
       dialog.setOnShowListener {
         editText.requestFocus()
-        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as
           InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
       }
