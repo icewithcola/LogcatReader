@@ -1,6 +1,8 @@
 package com.dp.logcatapp.activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -28,6 +30,15 @@ class MainActivity : BaseActivityWithToolbar() {
 
     if (checkShouldTheAppExit(intent)) {
       return
+    }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+      // Check push notification permission
+      if (ActivityCompat.checkSelfPermission(
+          this,
+          Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        requestPermissions( arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1);
+      }
     }
 
     val logcatServiceIntent = Intent(this, LogcatService::class.java)

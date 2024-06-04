@@ -66,7 +66,9 @@ object Logger {
     tag: String,
     msg: String
   ) {
-    log(DEBUG, "[$tag] $msg")
+    if (BuildConfig.DEBUG) {
+      log(DEBUG, "[$tag] $msg")
+    }
   }
 
   fun error(

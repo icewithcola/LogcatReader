@@ -2,8 +2,8 @@
 <resources>
   <string name="app_name">Logcat Reader</string>
   <string name="device_logs">设备 Logs</string>
-  <string name="saved_logs">保存 logs</string>
-  <string name="saved_logs_action">保存 logs</string>
+  <string name="saved_logs">保存的logs</string>
+  <string name="saved_logs_action">保存的logs</string>
   <string name="settings">设置</string>
   <string name="start_recording">开始记录</string>
   <string name="stop_recording">停止记录</string>
@@ -12,7 +12,7 @@
   <string name="press_back_again_to_exit">再次点击退出</string>
   <string name="pref_cat_general">通用</string>
   <string name="pref_general_keep_screen_on">保持屏幕开启</string>
-  <string name="pref_cat_appearance">出现</string>
+  <string name="pref_cat_appearance">界面</string>
   <string name="pref_theme_title">主题</string>
   <string name="pref_theme_black_theme">暗色主题</string>
   <string name="exit">退出</string>

@@ -10,10 +10,7 @@ import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.ServiceInfo
-import android.graphics.BitmapFactory
 import android.os.Build.VERSION
-import android.os.Build.VERSION_CODES
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
@@ -54,7 +51,7 @@ class LogcatService : BaseService() {
     if (defaultBuffers.isNotEmpty() && Logcat.AVAILABLE_BUFFERS.isNotEmpty()) {
       val buffers = getDefaultSharedPreferences()
         .getStringSet(PreferenceKeys.Logcat.KEY_BUFFERS, emptySet())
-      if (buffers == null || buffers.isEmpty()) {
+      if (buffers.isNullOrEmpty()) {
         getDefaultSharedPreferences().edit {
           putStringSet(PreferenceKeys.Logcat.KEY_BUFFERS, defaultBuffers)
         }
@@ -80,32 +77,19 @@ class LogcatService : BaseService() {
   private fun createNotification(addStopRecordingAction: Boolean): Notification {
     val startIntent = Intent(this, MainActivity::class.java)
     startIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-    val contentIntent = if (VERSION.SDK_INT >= VERSION_CODES.M) {
+    val contentIntent =
       PendingIntent.getActivity(
         this, 0, startIntent,
         FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE,
       )
-    } else {
-      PendingIntent.getActivity(
-        this, 0, startIntent,
-        FLAG_UPDATE_CURRENT,
-      )
-    }
-
     val exitIntent = Intent(this, MainActivity::class.java)
     exitIntent.putExtra(MainActivity.EXIT_EXTRA, true)
     exitIntent.action = "exit"
-    val exitPendingIntent = if (VERSION.SDK_INT >= VERSION_CODES.M) {
+    val exitPendingIntent =
       PendingIntent.getActivity(
         this, 1, exitIntent,
         FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
       )
-    } else {
-      PendingIntent.getActivity(
-        this, 1, exitIntent,
-        FLAG_UPDATE_CURRENT
-      )
-    }
 
     val exitAction = NotificationCompat.Action.Builder(
       R.drawable.ic_clear_white_24dp,
@@ -130,19 +114,12 @@ class LogcatService : BaseService() {
       val stopRecordingIntent = Intent(this, MainActivity::class.java)
       stopRecordingIntent.putExtra(MainActivity.STOP_RECORDING_EXTRA, true)
       stopRecordingIntent.action = "stop recording"
-      val stopRecordingPendingIntent = if (VERSION.SDK_INT >= VERSION_CODES.M) {
+      val stopRecordingPendingIntent =
         PendingIntent.getActivity(
           this, 2,
           stopRecordingIntent,
           FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
         )
-      } else {
-        PendingIntent.getActivity(
-          this, 2,
-          stopRecordingIntent,
-          FLAG_UPDATE_CURRENT,
-        )
-      }
       val stopRecordingAction = NotificationCompat.Action.Builder(
         R.drawable.ic_stop_white_24dp,
         getString(R.string.stop_recording), stopRecordingPendingIntent
@@ -150,10 +127,6 @@ class LogcatService : BaseService() {
         .build()
 
       builder.addAction(stopRecordingAction)
-    }
-
-    if (VERSION.SDK_INT < 21) {
-      builder.setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
     }
 
     return builder.build()
