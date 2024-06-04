@@ -342,6 +342,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
     val prefGitHubPage = findPreference<Preference>(PreferenceKeys.About.KEY_GITHUB_PAGE)!!
     prefGitHubPage.setOnPreferenceClickListener { _ ->
       try {
+        val url = "https://github.com/icewithcola/LogcatReader"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+        true
+      } catch (e: Exception) {
+        false
+      }
+    }
+
+    val originalGitHubPage = findPreference<Preference>(PreferenceKeys.About.KEY_ORIGINAL_GITHUB_PAGE)!!
+    originalGitHubPage.setOnPreferenceClickListener { _ ->
+      try {
         val url = "https://github.com/darshanparajuli/LogcatReader"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
@@ -352,6 +365,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
       }
     }
   }
+
 
   class SaveLocationDialogFragment : BaseDialogFragment() {
     companion object {

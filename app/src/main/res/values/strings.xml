@@ -56,6 +56,8 @@
   <string name="log_priority">Log priority</string>
   <string name="pref_key_about_github_repo_title">GitHub Repository</string>
   <string name="pref_key_about_github_repo_summary">View source, create issues, etc</string>
+  <string name="pref_key_about_github_original_repo_title">Original GitHub Repository</string>
+  <string name="pref_key_about_github_original_repo_summary">Upstream, creator, who wrote most of the contents</string>
   <string name="filter">Filter</string>
   <string name="empty">Empty</string>
   <string name="delete">Delete</string>

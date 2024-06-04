@@ -51,8 +51,11 @@
     </string>
   <string name="started_recording">开始记录</string>
   <string name="log_priority">Log priority</string>
-  <string name="pref_key_about_github_repo_title">GitHub Repository</string>
-  <string name="pref_key_about_github_repo_summary">View source, create issues, etc</string>
+  <string name="pref_key_about_github_repo_title">GitHub 仓库</string>
+  <string name="pref_key_about_github_repo_summary">查看源代码，提交问题</string>
+  <string name="pref_key_about_github_original_repo_title">原 GitHub 仓库</string>
+  <string name="pref_key_about_github_original_repo_summary">查看创造了本应用的上游</string>
+
   <string name="filter">过滤</string>
   <string name="empty">Empty</string>
   <string name="delete">删除</string>
@@ -74,9 +77,9 @@
   <string name="log_count_fmt_plural">%d logs</string>
   <string name="select_all">选择全部</string>
   <string name="saving">保存中</string>
-  <string name="save_location">保存 location</string>
-  <string name="save_location_internal">内部</string>
-  <string name="save_location_custom">Custom</string>
+  <string name="save_location">保存位置</string>
+  <string name="save_location_internal">应用内部</string>
+  <string name="save_location_custom">自定义</string>
   <string name="err_msg_external_storage_not_writable">外置储存卡不可写入</string>
   <string name="select">选择</string>
   <string name="filters">过滤</string>
@@ -87,7 +90,7 @@
   <string name="exclusions">排除</string>
   <string name="restart_logcat">重启 logcat</string>
   <string name="exclusion">排除</string>
-  <string name="clear">清楚</string>
+  <string name="clear">清除</string>
   <string name="process_id" translatable="false">PID</string>
   <string name="thread_id" translatable="false">TID</string>
   <string name="log_level">Log 等级</string>
