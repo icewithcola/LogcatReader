@@ -1,0 +1,56 @@
+[versions]
+appcompat = "1.7.0"
+constraintlayout = "2.1.4"
+coreKtx = "1.13.1"
+documentfile = "1.0.1"
+espressoCore = "3.5.1"
+fragmentKtx = "1.7.1"
+gradle = "8.4.1"
+junit = "4.13.2"
+kotlin = "1.9.10"
+kotlinReflect = "1.9.20"
+kotlinxCoroutinesAndroid = "1.7.3"
+ksp = "1.9.10-1.0.13"
+legacyPreferenceV14 = "1.0.0"
+lifecycleCommonJava8 = "2.8.1"
+lifecycleExtensions = "2.2.0"
+lifecycleRuntimeKtx = "2.8.1"
+lifecycleService = "2.8.1"
+lifecycleViewmodelKtx = "2.8.1"
+material = "1.12.0"
+multidex = "2.0.1"
+preferenceKtx = "1.2.1"
+roomRuntime = "2.6.1"
+runner = "1.5.2"
+roomCompiler = "2.6.1"
+
+[libraries]
+
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" }
+legacy-preference-v14 = { module = "androidx.legacy:legacy-preference-v14", version.ref = "legacyPreferenceV14" }
+lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleCommonJava8" }
+lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycleService" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+runner = { module = "androidx.test:runner", version.ref = "runner" }
+
+[plugins]
+
+kotlinSymbolProcessing = { id = "com.google.devtools.ksp", version.ref = "ksp"}
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
