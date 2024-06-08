@@ -3,6 +3,7 @@ package com.dp.logcatapp.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.TaskStackBuilder
+import android.app.UiModeManager
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
@@ -188,10 +189,19 @@ fun Context.isDarkThemeOn(): Boolean {
 }
 
 private fun Context.setThemeAuto() {
-  if (isDarkThemeTime()) {
-    setThemeDark()
-  } else {
-    setThemeLight()
+  if (SDK_INT < 29) {
+    if (isDarkThemeTime()) {
+      setThemeDark()
+    } else {
+      setThemeLight()
+    }
+  }else {
+    val uiModeManager = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+    if (uiModeManager.nightMode == UiModeManager.MODE_NIGHT_YES) {
+      setThemeDark()
+    } else {
+      setThemeLight()
+    }
   }
 }
 
