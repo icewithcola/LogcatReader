@@ -2,8 +2,8 @@
 <resources>
   <string name="app_name">Logcat Reader</string>
   <string name="device_logs">设备 Logs</string>
-  <string name="saved_logs">保存的logs</string>
-  <string name="saved_logs_action">保存的logs</string>
+  <string name="saved_logs">保存的 logs</string>
+  <string name="saved_logs_action">保存的 logs</string>
   <string name="settings">设置</string>
   <string name="start_recording">开始记录</string>
   <string name="stop_recording">停止记录</string>

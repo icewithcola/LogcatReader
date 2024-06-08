@@ -1,12 +1,13 @@
 <img src="/app/playstore_images/launcher_icon.png" width="192px" />
 
-# Logcat Reader [![Build Status](https://travis-ci.org/darshanparajuli/LogcatReader.svg?branch=master)](https://travis-ci.org/darshanparajuli/LogcatReader)
+# Logcat Reader
 
 A simple app for viewing logs on an android device.
 
-<a href="https://f-droid.org/packages/com.dp.logcatapp/" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
-<a href='https://play.google.com/store/apps/details?id=com.dp.logcatapp'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="80"/></a>
+This fork is based on [Logcat Reader by darshanparajuli](https://github.com/darshanparajuli/LogcatReader)
+
+# Downloads
+[Github releases](https://github.com/icewithcola/LogcatReader/releases)
 
 ## Screenshots
 <img src="/app/playstore_images/screenshots/screenshot-1.png" width="300px" /> <img src="/app/playstore_images/screenshots/screenshot-2.png" width="300px" />
@@ -17,8 +18,10 @@ Use ADB to grant `android.permission.READ_LOGS` to LogCatReader.
 
 ```sh
 adb shell "pm grant com.dp.logcatapp android.permission.READ_LOGS && am force-stop com.dp.logcatapp"
-```
+``` 
+or use root permission to grant this permission.\
+On newer android versions (Android 13+) you still need to allow access all device logs manually.
 
 ## Contributing
 
-Pull requests are welcome! Please use [Square's code style](https://github.com/square/java-code-styles) for formatting. 🙏
+Pull requests are welcome!
