@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import com.dp.logcatapp.R
 import com.dp.logcatapp.fragments.base.BaseDialogFragment
 import com.dp.logcatapp.fragments.logcatlive.LogcatLiveFragment
+import com.dp.logcatapp.util.ShizukuUtil
 
 class NeedPermissionDialogFragment : BaseDialogFragment() {
 
@@ -21,6 +22,14 @@ class NeedPermissionDialogFragment : BaseDialogFragment() {
       }
       .setNegativeButton(R.string.root_method) { _, _ ->
         (targetFragment as LogcatLiveFragment).useRootToGrantPermission()
+      }
+      .setNeutralButton("Shizuku") { _, _ ->
+        if (ShizukuUtil().grantPermission()) {
+          RestartAppMessageDialogFragment.newInstance().show(
+            parentFragmentManager,
+            RestartAppMessageDialogFragment.TAG
+          )
+        }
       }
       .create()
   }

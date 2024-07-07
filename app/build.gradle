@@ -11,8 +11,8 @@ android {
     minSdkVersion 24
     compileSdk 34
     targetSdkVersion 34
-    versionCode 33
-    versionName '1.7.5'
+    versionCode 180
+    versionName '1.8.0'
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
     multiDexEnabled true
@@ -90,6 +90,9 @@ dependencies {
   implementation libs.kotlinx.coroutines.core
   implementation libs.kotlinx.coroutines.android
   implementation libs.multidex
+
+  implementation libs.shizuku
+  implementation libs.shizuku.provider
 
   testImplementation libs.junit
   androidTestImplementation libs.runner

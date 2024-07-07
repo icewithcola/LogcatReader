@@ -108,7 +108,7 @@
   <string name="success">完成</string>
   <string name="fail">Fail</string>
   <string name="manual_method">ADB模式</string>
-  <string name="read_logs_permission_required_msg">"READ_LOGS 权限已授权.\n\n如果您的设备是root用户，请选择'Root 模式'，否则，要使用ADB手动授予权限，请选择'ADB 模式'.\n\n只需要执行一次!"</string>
+  <string name="read_logs_permission_required_msg">"需要 READ_LOGS 权限以工作.\n\n如果您的设备是root用户，请选择'Root 模式'，如果您使用Shizuku,请点击Shizuku授权后重启本软件再点击Shizuku授权，否则，要使用ADB手动授予权限，请选择'ADB 模式'.\n\n只需要完成一次!"</string>
   <string name="root_method">Root模式</string>
   <string name="asking_permission_for_root_access">要求获得ROOT访问权限…</string>
   <string name="app_restart_dialog_title">需要重启应用</string>

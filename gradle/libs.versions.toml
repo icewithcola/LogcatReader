@@ -23,6 +23,7 @@ preferenceKtx = "1.2.1"
 roomRuntime = "2.6.1"
 runner = "1.5.2"
 roomCompiler = "2.6.1"
+shizukuVersion = "13.1.5"
 
 [libraries]
 
@@ -49,6 +50,8 @@ preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = 
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 runner = { module = "androidx.test:runner", version.ref = "runner" }
+shizuku = { module = "dev.rikka.shizuku:api", version.ref = "shizukuVersion" }
+shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizukuVersion" }
 
 [plugins]
 
